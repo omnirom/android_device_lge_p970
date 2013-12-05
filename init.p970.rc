@@ -39,27 +39,6 @@ on init
     symlink /storage/sdcard0/ /mnt/sdcard
     symlink /storage/sdcard0/ /storage/sdcard
 
-    # Directory-target for where the secure container
-    # imagefile directory will be bind-mounted
-    mkdir /mnt/secure/asec  0700 root root
-
-    # Secure container public mount points.
-    mkdir /mnt/asec  0700 root system
-    mount tmpfs tmpfs /mnt/asec mode=0755,gid=1000
-
-    # Filesystem image public mount points.
-    mkdir /mnt/obb 0700 root system
-    mount tmpfs tmpfs /mnt/obb mode=0755,gid=1000
-
-    chown root system /mnt/asec
-    chmod 0755 /mnt/asec
-    chown root system /mnt/obb
-    chmod 0755 /mnt/obb
-    mkdir /data/app-asec
-
-    export ASEC_MOUNTPOINT /mnt/asec
-    export LOOP_MOUNTPOINT /mnt/obb
-
     # Increase readahead buffers on MMC devices
     write /sys/block/mmcblk0/bdi/read_ahead_kb 1024
     write /sys/block/mmcblk1/bdi/read_ahead_kb 1024
