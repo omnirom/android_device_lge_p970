@@ -90,7 +90,7 @@ PRODUCT_PACKAGES += \
     charger_res_images
 
 PRODUCT_PACKAGES += \
-    power.$(TARGET_BOOTLOADER_BOARD_NAME) \
+    power.black \
     prb \
     lgcpversion \
     wifimac
@@ -134,8 +134,7 @@ PRODUCT_PACKAGES += \
     libOMX.TI.G726.decode
 
 PRODUCT_PACKAGES += \
-    hwcomposer.$(TARGET_BOOTLOADER_BOARD_NAME) \
-    lights.p970 \
+    lights.black \
     audio.a2dp.default \
     audio_policy.default \
     libaudioutils \
@@ -144,6 +143,7 @@ PRODUCT_PACKAGES += \
     libomap_mm_library_jni \
     libemoji \
     camera.omap3
+#    hwcomposer.black \
 
 # legacy version of skia
 # fixes the app switcher previews
