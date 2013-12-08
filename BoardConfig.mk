@@ -64,7 +64,7 @@ BOARD_OPENCORE_FLAGS := -DHARDWARE_OMX=1
 
 ## Device
 TARGET_SPECIFIC_HEADER_PATH := device/lge/p970/include
-BOARD_HAS_VIBRATOR_IMPLEMENTATION := device/lge/p970/vibrator.c
+BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/lge/p970/vibrator.c
 BOARD_SYSFS_LIGHT_SENSOR := "/sys/devices/platform/omap/omap_i2c.2/i2c-2/2-0060/leds/lcd-backlight/als"
 COMMON_GLOBAL_CFLAGS += -DHAS_CONTEXT_PRIORITY -DDONT_USE_FENCE_SYNC
 COMMON_GLOBAL_CFLAGS += -DBOARD_CHARGING_CMDLINE_NAME='"rs"' -DBOARD_CHARGING_CMDLINE_VALUE='"c"'
@@ -93,7 +93,7 @@ BOARD_HAVE_FM_RADIO := true
 
 ## Recovery
 DEVICE_RESOLUTION := 480x800
-BOARD_CUSTOM_GRAPHICS := device/lge/p970/recovery/graphics.c
+BOARD_CUSTOM_GRAPHICS := ../../../device/lge/p970/recovery/graphics.c
 TARGET_RECOVERY_FSTAB := device/lge/p970/configs/fstab.black
 #TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 
