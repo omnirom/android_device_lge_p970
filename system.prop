@@ -29,6 +29,7 @@ ro.hwui.disable_scissor_opt=true
 ro.bq.gpu_to_cpu_unsupported=1
 
 ## Device Information
+ro.product.device=p970
 ro.device.cpu=1 GHz Cortex-A8
 ro.device.gpu=PowerVR SGX530
 ro.device.rear_cam=5.0 MP

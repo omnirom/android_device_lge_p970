@@ -18,6 +18,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <stdlib.h>
 
 #define LOG_TAG "Black PowerHAL"
 #include <utils/Log.h>

@@ -31,7 +31,8 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml \
-    $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml
+    $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
+    $(LOCAL_PATH)/tinyhw/tiny_hw.xml:system/etc/tiny_hw.xml \
 
 # frandom
 PRODUCT_COPY_FILES += \
@@ -135,15 +136,16 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     lights.black \
+    camera.black \
     audio.a2dp.default \
     audio_policy.default \
+	audio.primary.omap3 \
     libaudioutils \
     libtiutils \
-    libion_ti \
+    libion \
     libomap_mm_library_jni \
-    libemoji \
-    camera.omap3
-#    hwcomposer.black \
+    libemoji
+#    hwcomposer.omap3 \
 
 # legacy version of skia
 # fixes the app switcher previews
