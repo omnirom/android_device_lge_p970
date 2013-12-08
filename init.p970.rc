@@ -1,13 +1,11 @@
 import init.black.usb.rc
 
 on early-init
-    export ANDROID_CACHE /cache
+#    export ANDROID_CACHE /cache
+    export PATH=/system/bin:/system/xbin:/sbin
+    export HOME=/data
 
 on init
-
-    # TWRP
-    export PATH /sbin
-    export LD_LIBRARY_PATH .:/sbin
 
     export DSP_PATH /system/lib/dsp
     export DEFAULT_BASEIMAGE /system/lib/dsp/baseimage.dof
@@ -28,16 +26,16 @@ on init
     chown system system /sys/class/leds/lcd-backlight/als
 
     # KitKat SDCARD
-    mount tmpfs tmpfs /storage mode=0050,uid=0,gid=1028
+    # mount tmpfs tmpfs /storage mode=0050,uid=0,gid=1023
     mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
-    mkdir /storage/sdcard0 0700 root sdcard_r
+    mkdir /storage/sdcard0 0700 root root
 
-    export EXTERNAL_STORAGE /storage/sdcard0/
+    export EXTERNAL_STORAGE /storage/sdcard0
 
     # Support legacy paths
-    symlink /storage/sdcard0/ /sdcard
-    symlink /storage/sdcard0/ /mnt/sdcard
-    symlink /storage/sdcard0/ /storage/sdcard
+    symlink /storage/sdcard0 /sdcard
+    symlink /storage/sdcard0 /mnt/sdcard
+    symlink /storage/sdcard0 /storage/sdcard
 
     # Increase readahead buffers on MMC devices
     write /sys/block/mmcblk0/bdi/read_ahead_kb 1024
@@ -72,8 +70,25 @@ on fs
     mkdir /lgdrm 0770 lgdrm lgdrm_acc
     mount ext3 /dev/block/mmcblk0p5 /lgdrm nosuid nodev
 
+on post-fs
+
+	# Busybox
+    mkdir /data/local/tmp 0777 system shell
+    export HISTFILE /data/local/tmp/.ash_history
+    export HISTFILESIZE 1000
+    export ENV /system/etc/profile
+
+	# Mount tmp, we dont have swap, use ramfs which can grow if required
+    mkdir /tmp
+    mount ramfs ramfs /tmp size=512k relatime
+    chmod 0777 /tmp
+    chown system shell /tmp
+
+	# Change ownership for vibrators
+    chown system system /sys/class/timed_output/vibrator/enable
+    chmod 0660 /sys/class/timed_output/vibrator/enable
+
 on post-fs-data
-    setprop vold.post_fs_data_done 1
 
     # Create the directories used by the Wireless subsystem
     mkdir /data/misc/wifi 0770 wifi wifi
@@ -91,6 +106,8 @@ on post-fs-data
 
     # Run sysinit
     start sysinit
+
+    setprop vold.post_fs_data_done 1
 
 on boot
 
