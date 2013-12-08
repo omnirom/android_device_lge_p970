@@ -12,7 +12,7 @@ TARGET_ARCH_VARIANT_CPU := cortex-a8
 TARGET_CPU_VARIANT := cortex-a8
 TARGET_ARCH_VARIANT_FPU := neon
 TARGET_ARCH_LOWMEM := true
-ARCH_ARM_HAVE_TLS_REGISTER := true
+# ARCH_ARM_HAVE_TLS_REGISTER := true
 OMAP_ENHANCEMENT := true
 
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp
