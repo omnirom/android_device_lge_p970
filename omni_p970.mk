@@ -90,7 +90,7 @@ PRODUCT_PACKAGES += \
     charger_res_images
 
 PRODUCT_PACKAGES += \
-    power.$(TARGET_BOOTLOADER_BOARD_NAME) \
+    power.p970 \
     prb \
     lgcpversion \
     wifimac
@@ -134,7 +134,7 @@ PRODUCT_PACKAGES += \
     libOMX.TI.G726.decode
 
 PRODUCT_PACKAGES += \
-    hwcomposer.$(TARGET_BOOTLOADER_BOARD_NAME) \
+    hwcomposer.p970 \
     lights.p970 \
     audio.a2dp.default \
     audio_policy.default \
