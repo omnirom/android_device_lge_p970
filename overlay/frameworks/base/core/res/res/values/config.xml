@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Flag indicating whether the surface flinger is inefficient
+         at performing a blur.  Used by parts of the UI to turn off
+         the blur effect where it isn't worth the performance hit. -->
+    <bool name="config_sf_slowBlur">false</bool>
 
     <bool name="config_animateScreenLights">false</bool>
 
